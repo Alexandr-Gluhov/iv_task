@@ -15,7 +15,7 @@
                     <img src="/iv_task/inc/img/logo.png" width="50">
                     Областная поликлиника
                 </div>
-                <div class="col d-flex aling-items-center">
+                <div class="col text-end">
 
                     <?php
                     include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/auth_bock.php');
