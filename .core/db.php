@@ -38,11 +38,6 @@ class Database
         return static::connection()->query($statement);
     }
 
-    public static function lastInsertId(): int
-    {
-        return intval(static::connection()->lastInsertId());
-    }
-
     protected function __clone()
     {
     }

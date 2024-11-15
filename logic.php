@@ -34,8 +34,10 @@ if (isset($_GET['date']) && $_GET['date'] !== '') {
 }
 
 if (!empty($conditions)) {
-    $sql .= 'WHERE ' . implode(' AND ', $conditions);
+    $sql .= 'WHERE ' . implode(' AND ', $conditions) . "\n";
 }
+
+$sql .= 'ORDER BY r.hour, a.id';
 
 $stmt = Database::prepare($sql);
 $stmt->execute($bindings);
