@@ -74,6 +74,10 @@ class UserLogic
         if (null === $user) {
             return "Пользователь с таким email не найден";
         }
+        
+        if (!password_verify($password . $user['salt'], $user['password'])) {
+            return 'Неверно указан пароль';
+        }
 
         $_SESSION['USER_ID'] = $user['id'];
 
