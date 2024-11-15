@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2024 at 12:17 AM
+-- Generation Time: Nov 16, 2024 at 12:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,11 +39,16 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `doctor_id`, `reception_hour_id`, `user_id`) VALUES
-(1, 1, 1, 1),
+(1, 1, 1, 6),
 (2, 1, 2, NULL),
 (3, 4, 3, NULL),
 (4, 4, 1, NULL),
-(5, 2, 5, 1);
+(5, 2, 5, NULL),
+(7, 3, 2, 7),
+(8, 5, 3, 6),
+(9, 6, 2, 7),
+(10, 7, 4, NULL),
+(11, 8, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +71,10 @@ INSERT INTO `doctors` (`id`, `specialist_id`, `name`) VALUES
 (2, 1, 'Иванов А. Г.'),
 (3, 2, 'Коновалова А. А.'),
 (4, 1, 'Матросов С. В.'),
-(5, 2, 'Перцев Г. С.');
+(5, 2, 'Перцев Г. С.'),
+(6, 4, 'Серебрин А. Д.'),
+(7, 5, 'Кавалина И. В.'),
+(8, 3, 'Кузнев И. И.');
 
 -- --------------------------------------------------------
 
@@ -107,7 +115,10 @@ CREATE TABLE `specialists` (
 
 INSERT INTO `specialists` (`id`, `name`) VALUES
 (1, 'Терапевт'),
-(2, 'Офтальмолог');
+(2, 'Офтальмолог'),
+(3, 'Гастроэнтеролог'),
+(4, 'Алерголог'),
+(5, 'Отоларинголог');
 
 -- --------------------------------------------------------
 
@@ -132,7 +143,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `salt`, `birth_date`, `sex`, `blood_type`, `factor`) VALUES
-(1, 'sanjok2505@gmail.com', 'Глухов Александр Владимирович', '$2y$10$mTr0xYpGNs7biZY7MhkTYeVE.eBYfkGrF8g1NjH2xGSHmetzToHRy', 'eecbba6045ea50244d6', '2004-05-25', 'M', 1, '+');
+(6, 'AlexandrTRS@yandex.ru', 'Глухов Александр Владимирович', '$2y$10$LyNTNJ4rlSQ1WOXarnL34uuhjuGtck6zWUVR.OkrNjlSUOFgUr1iS', '062c2776086adb8c8f', '2004-05-25', 'M', 4, '-'),
+(7, 'sbdy@example.com', 'Иванов Иван Иванович', '$2y$10$.rQ3g.aI9IES75Eh1Y4TUuviiRsVU3c5lWY62qcvjP5GtltjKU/KS', '0269262ed1a14b69d7b4', '2014-05-25', 'M', 2, '+');
 
 --
 -- Indexes for dumped tables
@@ -181,13 +193,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reception_hours`
@@ -199,13 +211,13 @@ ALTER TABLE `reception_hours`
 -- AUTO_INCREMENT for table `specialists`
 --
 ALTER TABLE `specialists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
