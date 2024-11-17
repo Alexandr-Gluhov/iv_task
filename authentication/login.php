@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
 require_once($_SERVER['DOCUMENT_ROOT'] .  '/iv_task/.core/index.php');
 
 $error = UserActions::signIn();
@@ -27,5 +27,5 @@ if (isset($_SESSION['USER_ID'])) {
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');
 ?>

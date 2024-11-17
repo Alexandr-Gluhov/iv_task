@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/logic.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
 ?>
 
 <div class="container mt-5">
@@ -12,7 +12,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
             <select name="specialist" class="form-control">
                 <option value="">Специалист</option>
 
-                <?php foreach (SpecialistTable::get_all() as $specialist): ?>
+                <?php foreach (SpecialistTable::getAll() as $specialist): ?>
                     <option value="<?= $specialist['id'] ?>" <?= isset($_GET['specialist']) && $_GET['specialist'] == $specialist['id'] ? 'selected' : '' ?>><?= $specialist['name'] ?></option>
                 <?php endforeach ?>
 
@@ -22,7 +22,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
             <select name="date" class="form-control">
                 <option value="">Дата</option>
 
-                <?php foreach (ReceptionHourTable::get_all_day_from_now() as $day): ?>
+                <?php foreach (ReceptionHourTable::getAllDaysFromNow() as $day): ?>
                     <option <?= isset($_GET['date']) && $_GET['date'] == $day['date'] ? 'selected' : '' ?>><?= $day['date'] ?></option>
                 <?php endforeach ?>
 
@@ -79,4 +79,4 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
     </table>
 </div>
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');

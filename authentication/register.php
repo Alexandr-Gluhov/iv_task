@@ -11,7 +11,7 @@ if (isset($_GET['success']) && $_GET['success'] == 'y') {
     die();
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
 ?>
 
 <div class="container mt-3">
@@ -51,4 +51,4 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
     </form>
 
 </div>
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/footer.php');?>

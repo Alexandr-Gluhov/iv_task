@@ -1,6 +1,6 @@
 <?php
 class SpecialistTable {
-    public static function get_all() {
+    public static function getAll() {
         $stmt = Database::query("SELECT * FROM `specialists`");
         $stmt->execute();
         return $stmt->fetchAll();

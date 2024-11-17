@@ -31,7 +31,7 @@ class UserTable
         }
     }
 
-    public static function get_by_email(string $email): array | null
+    public static function getByEmail(string $email): array | null
     {
         $query = Database::prepare("SELECT * FROM `users` WHERE `email` = :email");
         $query->bindValue(":email", $email);
@@ -46,7 +46,7 @@ class UserTable
         return $users[0];
     }
 
-    public static function get_by_id(int $id) {
+    public static function getById(int $id) {
         $query = Database::prepare("SELECT * FROM `users` WHERE `id` = :id");
         $query->bindParam(":id", $id);
         $query->execute();

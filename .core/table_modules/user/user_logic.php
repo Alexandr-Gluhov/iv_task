@@ -38,7 +38,7 @@ class UserLogic
             $errors[] = "Введите пароль";
         }
 
-        if (UserTable::get_by_email($email) !== null) {
+        if (UserTable::getByEmail($email) !== null) {
             $errors[] = "Пользователь с данным email уже зарегистрирован";
         }
 
@@ -70,7 +70,7 @@ class UserLogic
             return "Вы уже авторизованы";
         }
 
-        $user = UserTable::get_by_email($email);
+        $user = UserTable::getByEmail($email);
         if (null === $user) {
             return "Пользователь с таким email не найден";
         }
@@ -100,6 +100,6 @@ class UserLogic
             return null;
         }
 
-        return UserTable::get_by_id($_SESSION['USER_ID']);
+        return UserTable::getById($_SESSION['USER_ID']);
     }
 }
