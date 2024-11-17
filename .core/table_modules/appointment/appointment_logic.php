@@ -7,7 +7,7 @@ class AppointmentLogic {
         }
         $current_user_id = $current_user['user_id'];
         if ($current_user_id !== '' && $current_user_id !== null) {
-            return 'Запись не свободна';
+            return 'Запись занята другим пользователем';
         }
         AppointmentTable::set_user($appointment_id, $user_id);
         return '';
@@ -19,7 +19,7 @@ class AppointmentLogic {
         }
         $current_user_id = $current_user['user_id'];
         if ($current_user_id !== $_SESSION['USER_ID']) {
-            return 'Запись не принадлежит текущему пользователю';
+            return 'Вы не были записаны';
         }
         AppointmentTable::unset_user($appointment_id);
         return '';
