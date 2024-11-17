@@ -1,6 +1,11 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/.core/index.php');
 
+if (!UserLogic::isAuthorized()) {
+    header('Location: /iv_task/authentication/login.php');
+    die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_to_appointment'])) {
         AppointmentAction::set_user();
