@@ -13,7 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_appointment'])) {
         AppointmentAction::unset_user();
     }
-    header('Location: ' . $_SERVER['PHP_SELF'] . '?' . implode('&', array_map(fn($key, $value) => "$key=$value", array_keys($_GET), $_GET)));
+
+    $getParams = '';
+
+    if (count($_GET)) {
+        $getParams = '?' . implode('&', array_map(fn($key, $value) => "$key=$value", array_keys($_GET), $_GET));
+    }
+    
+    header('Location: ' . $_SERVER['PHP_SELF'] . $getParams);
 }
 
 $sql = 'SELECT a.id AS appointment_id, s.name AS specialist, d.name AS doctor_name, DATE_FORMAT(r.hour, "%d.%m.%Y") AS date, DATE_FORMAT(r.hour, "%H:%i") AS time, a.user_id
