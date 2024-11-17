@@ -18,7 +18,7 @@
                 <div class="col text-end">
 
                     <?php
-                    include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/auth_bock.php');
+                    include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/auth_block.php');
                     ?>
 
                 </div>
