@@ -1,8 +1,13 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] .  '/iv_task/.core/index.php');
 
+if (UserLogic::isAuthorized()) {
+    header(("Location: /iv_task/index.php"));
+    die();
+}
+
 if (isset($_GET['success']) && $_GET['success'] == 'y') {
-    header("Location: /iv_task/authentication/login.php");
+    header("Location: /iv_task/authentication/login.php?success=y");
     die();
 }
 
