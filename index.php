@@ -34,20 +34,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
     </form>
     <table class="table text-center">
         <thead>
-            <tr>
-                <th scope="col">Специалист</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">Дата</th>
-                <th scope="col">Время</th>
-                <th scope="col">Запись</th>
+            <tr class="bg-light">
+                <th width="20%" scope="col">Специалист</th>
+                <th width="20%" scope="col">ФИО</th>
+                <th width="20%" scope="col">Дата</th>
+                <th width="20%" scope="col">Время</th>
+                <th width="20%" scope="col">Запись</th>
             </tr>
         </thead>
         <tbody>
 
             <?php foreach ($stmt as $row): ?>
                 <?php $row = array_map(fn($value) => !is_null($value) ? htmlspecialchars($value) : '', $row); ?>
-                <tr>
-                    <th><?= $row['specialist'] ?></th>
+                <tr scope="row" height="50px">
+                    <td><?= $row['specialist'] ?></td>
                     <td><?= $row['doctor_name'] ?></td>
                     <td><?= $row['date'] ?></td>
                     <td><?= $row['time'] ?></td>
