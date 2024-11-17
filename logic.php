@@ -6,21 +6,26 @@ if (!UserLogic::isAuthorized()) {
     die();
 }
 
+$action_error = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action_error = '';
     if (isset($_POST['add_to_appointment'])) {
-        AppointmentAction::set_user();
+        $action_error .= AppointmentAction::set_user();
     }
     if (isset($_POST['delete_appointment'])) {
-        AppointmentAction::unset_user();
+        $action_error .= AppointmentAction::unset_user();
     }
 
-    $getParams = '';
+    if (empty($action_error)) {
+        $getParams = '';
 
-    if (count($_GET)) {
-        $getParams = '?' . implode('&', array_map(fn($key, $value) => "$key=$value", array_keys($_GET), $_GET));
+        if (count($_GET)) {
+            $getParams = '?' . implode('&', array_map(fn($key, $value) => "$key=$value", array_keys($_GET), $_GET));
+        }
+
+        header('Location: ' . $_SERVER['PHP_SELF'] . $getParams);
     }
-    
-    header('Location: ' . $_SERVER['PHP_SELF'] . $getParams);
 }
 
 $sql = 'SELECT a.id AS appointment_id, s.name AS specialist, d.name AS doctor_name, DATE_FORMAT(r.hour, "%d.%m.%Y") AS date, DATE_FORMAT(r.hour, "%H:%i") AS time, a.user_id
@@ -39,7 +44,7 @@ $bindings = [];
 if (isset($_GET['specialist']) && $_GET['specialist'] !== '') {
     $conditions[] = 's.id = :specialist';
     $bindings[':specialist'] = $_GET['specialist'];
-}        
+}
 
 if (isset($_GET['date']) && $_GET['date'] !== '') {
     $conditions[] = 'r.hour BETWEEN STR_TO_DATE(:date, "%d.%m.%Y") AND STR_TO_DATE(:date, "%d.%m.%Y") + INTERVAL 1 DAY';

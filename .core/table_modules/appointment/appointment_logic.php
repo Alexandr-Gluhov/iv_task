@@ -10,6 +10,7 @@ class AppointmentLogic {
             return 'Запись не свободна';
         }
         AppointmentTable::set_user($appointment_id, $user_id);
+        return '';
     }
     public static function unset_user(int $appointment_id) {
         $current_user = AppointmentTable::get_appointment($appointment_id);
@@ -21,5 +22,6 @@ class AppointmentLogic {
             return 'Запись не принадлежит текущему пользователю';
         }
         AppointmentTable::unset_user($appointment_id);
+        return '';
     }
 }

@@ -9,7 +9,7 @@ class AppointmentAction {
             return;
         }
 
-        AppointmentLogic::set_user(intval($_POST['add_to_appointment']), intval($_SESSION['USER_ID']));
+        return AppointmentLogic::set_user(intval($_POST['add_to_appointment']), intval($_SESSION['USER_ID']));
     }
 
     public static function unset_user() {
@@ -21,6 +21,6 @@ class AppointmentAction {
             return;
         }
 
-        AppointmentLogic::unset_user(intval($_POST['delete_appointment']));
+        return AppointmentLogic::unset_user(intval($_POST['delete_appointment']));
     }
 }

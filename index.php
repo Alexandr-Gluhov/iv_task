@@ -4,6 +4,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iv_task/templates/header.php');
 ?>
 
 <div class="container mt-5">
+    <?php if (!empty($action_error)): ?>
+        <div class="alert alert-danger"><?=$action_error?></div>
+    <?php endif ?>
     <form method="get" class="row">
         <div class="col">
             <select name="specialist" class="form-control">
